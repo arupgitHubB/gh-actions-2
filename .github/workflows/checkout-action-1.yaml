@@ -17,4 +17,4 @@ jobs:
         - name: check current dir
           run: pwd
         - name: Listing files
-          run: tree .
+          run: tree /home/runner/work/gh-actions-2/
