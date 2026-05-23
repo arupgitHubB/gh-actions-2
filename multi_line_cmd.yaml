@@ -1,0 +1,15 @@
+name: multi_line_cmd_1
+on: push
+jobs:
+    multi_line_cmd_job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout the repo
+          uses: actions/checkout@v6
+        - name: multi line cmds
+          run: |
+            echo "Cheers to github Actions learning !!"
+            ls -lart
+            sudo apt install tree -y
+            pwd
+            tree /home/runner/work/gh-actions-2/
