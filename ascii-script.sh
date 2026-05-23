@@ -1,6 +1,6 @@
 #!/bin/sh
 sudo apt-get install cowsay -y
-cowsay -f lion "I am the KING of the jungle !!" >> lion.txt
-grep -i "king" lion.txt
-cat lion.txt
+cowsay -f dragon "Run for cover. I am a DRAGON.. RAWR !!" >> dragon.txt
+grep -i "dragon" dragon.txt
+cat dragon.txt
 ls -ltra
