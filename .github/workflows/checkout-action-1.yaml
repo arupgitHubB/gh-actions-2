@@ -14,5 +14,7 @@ jobs:
           run: cat README.md
         - name: install tree pkg
           run: sudo apt install tree -y
+        - name: check current dir
+          run: pwd
         - name: Listing files
           run: tree .
