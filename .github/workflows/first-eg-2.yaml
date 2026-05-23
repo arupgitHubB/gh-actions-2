@@ -1,0 +1,14 @@
+name: my first workflow
+on: push
+jobs:
+    first_job:
+        runs-on: ubuntu-latest
+        steps:
+          - name: clone the repo
+            run: git clone git@github.com:arupgitHubB/gh-actions-2.git
+          - name: Welcome message
+            run: echo "Cheers to github Actions learning !!"
+          - name: Listing files
+            run: ls gh-actions-2
+          - name: Read README
+            run: cat gh-actions-2/README.md
