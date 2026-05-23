@@ -10,3 +10,13 @@ jobs:
           run: |
             chmod +x ascii-script.sh
             ./ascii-script.sh
+    
+    run_shell_script_job_2:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout the repo
+          uses: actions/checkout@v6
+        - name: run shell script 2
+          run: |
+            chmod +x ascii-script-2.sh
+            ./ascii-script-2.sh
