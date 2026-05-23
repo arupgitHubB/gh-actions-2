@@ -13,6 +13,6 @@ jobs:
           - name: Read README
             run: cat gitrepo/README.md
           - name: install tree pkg
-            run: apt install tree -y
+            run: sudo apt install tree -y
           - name: Listing files
             run: tree gitrepo
