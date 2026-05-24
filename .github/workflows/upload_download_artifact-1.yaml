@@ -24,9 +24,19 @@ jobs:
             name: tux-file
             path: tux.txt
 
-    # test_job:
-    #     runs-on: ubuntu-latest
-    #     steps:
-    #     - name: Checkout the repo
-    #       uses: actions/checkout@v6
+    test_job:
+        needs:
+          - build_job
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout the repo
+          uses: actions/checkout@v6
+        - name: Upload dragon file artifact
+          uses: actions/download-artifact@v8
+          with:
+            name: dragon-file
+        - name: test if the file exists
+          run: |
+            grep -i "dragon" dragon.txt
+            cat dragon.txt
 
