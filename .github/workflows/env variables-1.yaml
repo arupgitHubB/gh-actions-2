@@ -1,0 +1,26 @@
+name: upload and download arifact
+on: push
+env:
+  DOCKER_USERNAME: "arupDockerhub"          ## workflow level env variables
+  DOCKERHUB_URL: "docker.io"
+  IMAGE_NAME: "my-app"
+jobs:
+    build_job:              ## can define job level env variables
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout the repo
+            uses: actions/checkout@v6
+          - name: login to docker
+            env:
+              DOCKER_PWD: "s3cUr3pwD"   ## step level env variables
+            run: echo "docker login -u {{ env.DOCKER_USERNAME}} -p {{ env.DOCKER_PWD }}"
+          - name: build the docker image
+            run: echo "docker build -t {{ env.DOCKERHUB_URL }}/{ env.DOCKER_USERNAME}}/{{ env.IMAGE_NAME }}:latest ."
+    
+    deploy_job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout the repo
+          uses: actions/checkout@v6
+        - name: push the image to repo
+          run: echo "docker push {{ env.DOCKERHUB_URL }}/{{ env.DOCKER_USERNAME}}/{{ env.IMAGE_NAME }}:latest"    
