@@ -1,4 +1,4 @@
-name: upload and download arifact
+name: env variables
 on: push
 env:
   DOCKER_USERNAME: "arupDockerhub"          ## workflow level env variables
