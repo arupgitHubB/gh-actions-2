@@ -10,7 +10,7 @@ jobs:
           run: |
             sudo apt-get install cowsay -y
             cowsay -f dragon "Run for cover. I am a DRAGON.. RAWR !!" >> dragon.txt
-            mkdir -p /app
+            sudo mkdir -p /app
             cowsay -f tux "Hello from the terminal!" >> /app/tux.txt
         - name: Upload artifact dragon.txt
           uses: actions/upload-artifact@v7
