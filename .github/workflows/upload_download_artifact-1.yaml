@@ -1,0 +1,31 @@
+name: upload and download arifact
+on: push
+jobs:
+    build_job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout the repo
+          uses: actions/checkout@v6
+        - name: run cowsay cmds
+          run: |
+            sudo apt-get install cowsay -y
+            cowsay -f dragon "Run for cover. I am a DRAGON.. RAWR !!" >> dragon.txt
+            mkdir -p /app
+            cowsay -f tux "Hello from the terminal!" >> /app/tux.txt
+        - name: Upload artifact dragon.txt
+          uses: actions/upload-artifact@v7
+          with:
+            name: dragon-file
+            path: dragon.txt
+        - name: Upload artifact tux.txt
+          uses: actions/upload-artifact@v7
+          with:
+            name: tux-file
+            path: /app/tux.txt
+
+    # test_job:
+    #     runs-on: ubuntu-latest
+    #     steps:
+    #     - name: Checkout the repo
+    #       uses: actions/checkout@v6
+
