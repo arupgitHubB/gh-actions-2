@@ -40,3 +40,21 @@ jobs:
             grep -i "dragon" dragon.txt
             cat dragon.txt
 
+    deploy_job:
+        needs:
+          - build_job
+          - test_job
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout the repo
+          uses: actions/checkout@v6
+        - name: Upload tux file artifact
+          uses: actions/download-artifact@v8
+          with:
+            name: tux-file
+        - name: test if the file exists
+          run: |
+            cat tux.txt
+            echo "Deploying....."
+
+
