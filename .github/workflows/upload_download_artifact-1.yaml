@@ -25,7 +25,7 @@ jobs:
             path: tux.txt
 
     test_job:
-        needs:
+        needs:                          # added needs kw fir dependency
           - build_job
         runs-on: ubuntu-latest
         steps:
@@ -56,5 +56,3 @@ jobs:
           run: |
             cat tux.txt
             echo "Deploying....."
-
-
