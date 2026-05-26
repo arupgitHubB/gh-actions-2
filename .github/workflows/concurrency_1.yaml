@@ -1,5 +1,6 @@
 name: concurrency
 on:
+    push:
     workflow_dispatch:
 
 jobs:
@@ -17,8 +18,7 @@ jobs:
         - name: print time
           run: date
     deploy_job:
-        needs:
-          - trigger_job
+        needs: trigger_job
         concurrency:
           group: prod-deployment
           cancel-in-progress: false
