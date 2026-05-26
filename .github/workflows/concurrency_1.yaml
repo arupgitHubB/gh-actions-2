@@ -1,7 +1,7 @@
 name: concurrency
 on:
-  push:
-  workflow_dispatch:
+    push:
+    workflow_dispatch:
 
 jobs:
     trigger_job:
