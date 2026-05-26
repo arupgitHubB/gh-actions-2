@@ -1,6 +1,5 @@
 name: concurrency
 on:
-    push:
     workflow_dispatch:
 
 jobs:
