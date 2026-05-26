@@ -12,4 +12,5 @@ jobs:
             ls -lart
             sudo apt install tree -y
             pwd
+            date
             tree /home/runner/work/gh-actions-2/
