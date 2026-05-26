@@ -1,0 +1,43 @@
+name: manual n scheduled trigger
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+          - info
+          - warning
+          - debug
+      print_tags:
+        description: 'True to print to STDOUT'
+        required: true
+        type: boolean
+      tags:
+        description: 'Test scenario tags'
+        required: false
+        type: string
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: false
+  schedule:
+    - cron: "*/5 * * * *"
+
+jobs:
+    trigger_job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout the repo
+          uses: actions/checkout@v6
+        - name: Welcome message
+          run: echo "Cheers to github Actions learning !!"
+        - name: Listing files
+          run: ls -lart
+        - name: Read README
+          run: cat README.md
+        - name: print time
+          run: date
