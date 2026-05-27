@@ -1,4 +1,4 @@
-name: concurrency
+name: workflow level concurrency
 on:
     push:
     workflow_dispatch:
