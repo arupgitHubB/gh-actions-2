@@ -1,0 +1,23 @@
+name: concurrency
+on:
+    push:
+    workflow_dispatch:
+concurrency:              # workflow or root level concurrency
+  group: prod-deployment
+  cancel-in-progress: false
+jobs:
+    trigger_job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Welcome message
+          run: echo "Cheers to github Actions learning !!"
+        - name: print time
+          run: date
+    deploy_job:
+        needs: trigger_job
+        runs-on: ubuntu-latest
+        steps:
+        - name: Print message
+          run: echo "Deploying... Hang on !!"
+        - name: sleeping
+          run: sleep 120
