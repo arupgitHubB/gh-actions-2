@@ -1,0 +1,21 @@
+name: context variables usage
+on: push
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true  # previous jobs will be cancelled.
+jobs:
+    trigger_job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Welcome message
+          run: echo "Cheers to github Actions learning !!"
+        - name: print time
+          run: date
+    deploy_job:
+        needs: trigger_job
+        runs-on: ubuntu-latest
+        if:
+          github.ref == 'refs/heads/main'
+        steps:
+        - name: Print message
+          run: echo "Deploying... Hang on !!"
