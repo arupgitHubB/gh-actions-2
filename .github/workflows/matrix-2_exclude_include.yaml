@@ -1,0 +1,23 @@
+name: matrix job with options
+on:
+  push: 
+jobs:
+  docker:
+    strategy:
+      fail-fast: false    # by default is is true
+      max-parallel: 2     # no. of jobs at a time
+      matrix:
+        os: [windows-latest, ubuntu-latest, ubuntu-22.04 ]
+        images: [ hello-world, apline ]
+        exclude:                       # to exclude from the matrix
+          - images: apline
+            os: windows-latest
+        include:                      # to include which is not there
+          - images: amd64/alpine      # in the matrix
+            os: ubuntu-22.04
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Echo docker details
+        run: docker info
+      - name: Run image on ${{ matrix.os}}
+        run: docker run ${{ matrix.images }} 
