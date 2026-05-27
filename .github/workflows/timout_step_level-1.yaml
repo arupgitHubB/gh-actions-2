@@ -1,0 +1,22 @@
+name: timeout job
+on: push
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+    trigger_job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Welcome message
+          run: echo "Cheers to github Actions learning !!"
+        - name: print time
+          run: date
+    deploy_job:
+        needs: trigger_job
+        runs-on: ubuntu-latest
+        steps:
+        - name: Print message
+          run: echo "Deploying... Hang on !!"
+        - name: sleeping
+          timeout-minutes: 1        # timeout after 1 min for this step
+          run: sleep 120
