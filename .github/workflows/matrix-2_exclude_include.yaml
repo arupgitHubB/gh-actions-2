@@ -8,9 +8,9 @@ jobs:
       max-parallel: 2     # no. of jobs at a time
       matrix:
         os: [windows-latest, ubuntu-latest, ubuntu-22.04 ]
-        images: [ hello-world, apline ]
+        images: [ hello-world, alpine ]
         exclude:                       # to exclude from the matrix
-          - images: apline
+          - images: alpine
             os: windows-latest
         include:                      # to include which is not there
           - images: amd64/alpine      # in the matrix
