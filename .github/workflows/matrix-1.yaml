@@ -1,0 +1,15 @@
+name: simple matrix job
+on:
+  push: 
+jobs:
+  docker:
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest, ubuntu-22.04 ]
+        images: [ hello-world, apline ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Echo docker details
+        run: docker info
+      - name: Run image on ${{ matrix.os}}
+        run: docker run ${{ matrix.images }}    
