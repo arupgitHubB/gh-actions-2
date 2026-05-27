@@ -3,7 +3,7 @@ on:
     push:
     workflow_dispatch:
 concurrency:              # workflow or root level concurrency
-  group: prod-deployment
+  group: ${{ github.workflow }}-${{ github.ref }} # workflow name - branch
   cancel-in-progress: false
 jobs:
     trigger_job:
